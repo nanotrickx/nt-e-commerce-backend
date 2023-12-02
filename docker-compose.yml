@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+  # mongo:
+  #   image: mongo
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - mongodb_data_container:/data/db
+  #   networks:
+  #     - network
+  backend:
+    image: 028768193830.dkr.ecr.ap-south-1.amazonaws.com/bandr-prod-v1:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    # networks:
+    #   - network
+# volumes:
+#   mongodb_data_container:
+# networks:
+#   network:
+#     driver: bridge
+#     name: backend_network
